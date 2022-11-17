@@ -37,19 +37,25 @@
 <script lang="ts">
     import {ref} from 'vue'
     import {getBackgroundIndex, getBackgroundNextIndex} from "../../utils";
+    import background0 from '../../static/img/01.png';
+    import background1 from '../../static/img/02.png';
+    import background2 from '../../static/img/03.png';
+
+    console.log(background0);
+
 
     const list = [
         {
             title: 'red',
-            background: '/static/img/01.png',
+            background: 'http://192.168.199.138:8080/img/01.png',
         },
         {
             title: 'green',
-            background: '/static/img/02.png',
+            background: 'http://192.168.199.138:8080/img/02.png',
         },
         {
             title: 'blue',
-            background: '/static/img/03.png',
+            background: 'http://192.168.199.138:8080/img/03.png'
         }
     ]
     export default {
@@ -97,13 +103,13 @@
             //  获取背景图
             const getBackground = () => {
                 const index = getBackgroundIndex(current.value, turn.value, overHalf.value, startChange, stopChange, list);
-                // console.log('当前index', current.value, '过半', overHalf.value, '数据的index', index);
+                console.log('当前index', current.value, '过半', overHalf.value, '开始改变', startChange, '停止滚动', stopChange, '目标', index);
                 return `url(${list[index].background})`
             }
             //  获取后一个背景图
             const getBackgroundNext = () => {
                 const index = getBackgroundNextIndex(current.value, turn.value, overHalf.value, startChange, stopChange, list);
-                console.log('当前index', current.value, '过半', overHalf.value, '开始改变', startChange, '停止滚动', stopChange, '目标', index);
+                // console.log('当前index', current.value, '过半', overHalf.value, '开始改变', startChange, '停止滚动', stopChange, '目标', index);
                 return `url(${list[index].background})`
             }
 
@@ -133,7 +139,7 @@
 
 <style lang="less">
     .wrap {
-        background-color: lightgreen;
+        background-color: blue;
 
         //  头部背景
         .background-wrap {
@@ -161,8 +167,8 @@
             background: lightsteelblue;
         }
 
-        .line{
-            width:100%;
+        .line {
+            width: 100%;
             height: 20px;
             background-image: url(/static/img/bottom-border.png);
             background-repeat: no-repeat;
